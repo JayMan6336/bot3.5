@@ -1,11 +1,44 @@
-<html>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J's Free Claude 3.5 Bot</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://js.puter.com/v2/"></script>
+</head>
+<body>
+    <header>
+        <h1>J's Free Claude 3.5 Bot</h1>
+    </header>
+    <main>
+        <section class="bot-section">
+            <h2>Chat with Claude 3.5</h2>
+            <textarea id="user-input" placeholder="Type your message here..." rows="4"></textarea>
+            <button onclick="sendMessage()">Send</button>
+            <div id="conversation" class="conversation"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 J's Free Claude 3.5 Bot. All rights reserved.</p>
+    </footer>
+
     <script>
-        puter.ai.chat("Explain quantum computing in simple terms", {model: 'claude-3-5-sonnet'})
-            .then(response => {
-                puter.print(response.message.content[0].text);
-            });
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim()) {
+                const conversation = document.getElementById('conversation');
+                conversation.innerHTML += `<div class="user-message">${userInput}</div>`;
+
+                // Simulate bot response
+                setTimeout(() => {
+                    const botResponse = "Hello! How can I assist you today?";
+                    conversation.innerHTML += `<div class="bot-message">${botResponse}</div>`;
+                }, 1000);
+
+                document.getElementById('user-input').value = '';
+            }
+        }
     </script>
 </body>
 </html>
